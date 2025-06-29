@@ -2,7 +2,7 @@
 
 A clean and interactive web app to visualize recursive Fibonacci trees. Built with React, this tool helps you explore the structure and beauty of recursion in a visual, intuitive way.
 
-![image](https://github.com/user-attachments/assets/f61efa26-72d0-4ad5-a466-64f5d276e038)
+![image](https://github.com/user-attachments/assets/a63ded9a-d2ab-4560-bbba-2609e52372ec)
 
 ## ✨ Features
 
