@@ -6,12 +6,23 @@ export function generateFibTree(n) {
             return memo.get(val);
         }
 
-        const node = val <= 1
-            ? { name: `fib(${val})` }
-            : {
-                name: `fib(${val})`,
-                children: [buildTree(val - 1), buildTree(val - 2)],
+        let node;
+
+        if (val <= 1) {
+            node = {
+                name: `fib(${val}) = ${val}`,
+                value: val,
             };
+        } else {
+            const left = buildTree(val - 1);
+            const right = buildTree(val - 2);
+            const value = left.value + right.value;
+            node = {
+                name: `fib(${val}) = ${value}`,
+                value: value,
+                children: [left, right],
+            };
+        }
 
         memo.set(val, node);
         return node;

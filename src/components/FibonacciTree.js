@@ -65,13 +65,15 @@ export default function FibonacciTree({ data }) {
 
     // Custom render: circle with number + fib(n) label to the right
     const renderNode = ({ nodeDatum }) => {
-        const valueMatch = nodeDatum.name.match(/\d+/);
-        const number = valueMatch ? valueMatch[0] : '?';
+        const match = nodeDatum.name.match(/fib\((\d+)\) = (\d+)/);
+        const label = nodeDatum.name;
+        const number = match ? match[2] : '?';
+
         return (
             <g>
                 {/* Circle */}
                 <circle r={20} fill="#007acc" stroke="white" strokeWidth={2} />
-                {/* Number inside circle */}
+                {/* Fibonacci value inside circle */}
                 <text
                     fill="white"
                     stroke="none"
@@ -83,7 +85,7 @@ export default function FibonacciTree({ data }) {
                 >
                     {number}
                 </text>
-                {/* Label to the right of the circle */}
+                {/* fib(n) = value label beside the circle */}
                 <text
                     fill="#111111"
                     stroke="none"
@@ -93,7 +95,7 @@ export default function FibonacciTree({ data }) {
                     fontSize={16}
                     fontWeight="bold"
                 >
-                    {nodeDatum.name}
+                    {label}
                 </text>
 
 
@@ -117,7 +119,7 @@ export default function FibonacciTree({ data }) {
             }}
         >
             {/* Tree Container */}
-            <div div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+            <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
                 <Tree
                     data={data}
                     orientation="vertical"
